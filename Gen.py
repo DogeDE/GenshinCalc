@@ -1,6 +1,8 @@
 pulls = 0
 dailyprimo = 0
+battlepasscount = 0
 
+# Opens Command Line Interface, and prompts user for input
 while True:
     daysuntilbanner = input(
         "How many days until the wanted characters' Banner?\n")
@@ -48,7 +50,7 @@ while True:
         continue
     break
 
-
+# Initial Calculations
 dub = int(daysuntilbanner)
 
 if welkin:
@@ -58,13 +60,11 @@ else:
 if bannerincl:
     dub += 20
 if battlepass:
-    pulls += 8
+    battlepasscount = (dub // 42) + 1
+    pulls += 8 * battlepasscount
 if stardust:
-    if dub < 31:
-        pulls += 5
-    else:
-        dustProMonat = 5 * ((dub // 30) + 1)
-        pulls += dustProMonat
+    monthcount = (dub // 30) + 1
+    pulls += 5 * monthcount
 
 result = str((dailyprimo * dub)/160 + pulls)
 
